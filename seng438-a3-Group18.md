@@ -80,7 +80,17 @@ The new test case complements the existing one by covering the previously untest
 
 The new test case ensures the constrain method correctly clamps values exceeding the upper bound, complementing the existing test for the lower bound. This improves the robustness of the code by validating both extremities of the range constraint logic, directly increasing branch coverage
 
-ADD 3 MORE
+![](Pictures/data1.png)
+
+The test cases for calculateColumnTotal and calculateRowTotal significantly improve coverage by ensuring that the methods correctly process a subset of rows or columns rather than iterating over all available data.
+
+![](Pictures/data2.png)
+
+The tests for DataUtilities.clone(double[][]) ensure that both valid and exceptional cases are fully covered
+
+![](Pictures/data3.png)
+
+The tests for DataUtilities.equal(double[][], double[][]) enhance code coverage by validating how the method compares 2D arrays under various conditions.
 
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
