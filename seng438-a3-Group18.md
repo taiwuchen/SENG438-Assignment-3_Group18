@@ -29,10 +29,21 @@ The purpose of this lab is to explore automated unit-testing and more specifical
 ![](Pictures/3.png)
 
 ### Pairs covered in each test case
-FILL THIS IN
+![](Pictures/data_pairs_coverage.png)
 
 ### DU-pair coverage
-FILL THIS IN
+We calculate **DU-pair coverage** using the following formula:
+
+DU Coverage = Number of Covered DU Pairs / Total DU Pairs * 100%
+
+### Given Data:
+- **Total DU Pairs:** **17**
+- **Covered DU Pairs:** **15**
+- **Uncovered DU Pairs:** **2** (both related to `r2` in an unreachable loop)
+
+### Applying the Formula:
+DU Coverage = 15/17 * 100% = 88.24%
+
 
 ## (2) Range.equals 
 
@@ -77,7 +88,9 @@ ADD 3 MORE
 ![](Pictures/10.png)
 ![](Pictures/11.png)
 
-ADD DATAUTILITIES CLASS
+## (2) DataUtilities Class/Methods
+![](Pictures/data4.png)
+![](Pictures/data5.png)
 
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
