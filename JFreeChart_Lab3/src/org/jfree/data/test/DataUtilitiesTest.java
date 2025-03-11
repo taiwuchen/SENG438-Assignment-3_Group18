@@ -84,17 +84,20 @@ public class DataUtilitiesTest {
         DataUtilities.calculateColumnTotal(values, -1);
     }
     
-    // Older version
-    // @Test(expected = NullPointerException.class)
-    // public void calculateColumnTotal_nullDataObject() {
-    //     DataUtilities.calculateColumnTotal(null, 0);
-    // }
+//	 Older version
+//	 @Test(expected = NullPointerException.class)
+//	 public void calculateColumnTotal_nullDataObject() {
+//	     DataUtilities.calculateColumnTotal(null, 0);
+//	 }
     
     // New version
     @Test(expected = IllegalArgumentException.class)
     public void calculateColumnTotal_nullDataObject() {
+        // Expecting an IllegalArgumentException because data is null.
         DataUtilities.calculateColumnTotal(null, 0);
     }
+
+
 
 
     
@@ -272,12 +275,14 @@ public class DataUtilitiesTest {
         assertEquals("Single-element array length", 1, result.length);
         assertEquals("Element 0 should be 42.0", 42.0, result[0]);
     }
-    
+        
     @Test(expected = IllegalArgumentException.class)
     public void createNumberArrayException() {
         // Passing null should throw an IllegalArgumentException.
         DataUtilities.createNumberArray(null);
     }
+
+    
     
     // ======================
     // createNumberArray2D Tests
@@ -295,12 +300,112 @@ public class DataUtilitiesTest {
         assertEquals("Element [1][0] should be 3.5", 3.5, result[1][0]);
         assertEquals("Element [1][1] should be 4.5", 4.5, result[1][1]);
     }
-    
+        
     @Test(expected = IllegalArgumentException.class)
     public void createNumberArrayException2D() {
         // Passing a null 2D array should throw an IllegalArgumentException.
         DataUtilities.createNumberArray2D(null);
     }
     
-   
+    
+    // Added test cases for calculateColumnTotal(Values2D, int, int[]) and calculateRowTotal(Values2D, int, int[])
+    @Test
+    public void testCalculateColumnTotal_withValidRows() {
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+
+        mockingContext.checking(new Expectations() {{
+            // Suppose getRowCount() = 5, but we'll only sum rows 0,2,4
+            one(values).getRowCount(); will(returnValue(5));
+
+            // We expect getValue() calls for rows 0, 2, 4 in column 1
+            allowing(values).getValue(0, 1); will(returnValue(10.0));
+            allowing(values).getValue(2, 1); will(returnValue(20.0));
+            allowing(values).getValue(4, 1); will(returnValue(30.0));
+        }});
+
+        int[] validRows = {0, 2, 4};
+        double result = DataUtilities.calculateColumnTotal(values, 1, validRows);
+        // Expect 10 + 20 + 30 = 60
+        assertEquals(60.0, result, 0.000000001);
+    }
+    @Test
+    public void testCalculateRowTotal_withValidCols() {
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+
+        mockingContext.checking(new Expectations() {{
+            // Suppose getColumnCount() = 4, but we only sum columns 0 and 2
+            one(values).getColumnCount(); will(returnValue(4));
+
+            allowing(values).getValue(1, 0); will(returnValue(5.0));
+            allowing(values).getValue(1, 2); will(returnValue(15.0));
+        }});
+
+        int[] validCols = {0, 2};
+        double result = DataUtilities.calculateRowTotal(values, 1, validCols);
+        // Expect 5 + 15 = 20
+        assertEquals(20.0, result, 0.000000001);
+    }
+
+    // Add Tests for DataUtilities.clone(double[][])
+    @Test
+    public void testClone_valid2DArray() {
+        double[][] source = {{1.0, 2.0}, {3.0, 4.0}};
+        double[][] cloned = DataUtilities.clone(source);
+
+        // Check they are not the same object
+        assertNotSame("Cloned array should be a different object", source, cloned);
+        // Check content is the same
+        assertTrue("Content should match", DataUtilities.equal(source, cloned));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testClone_nullArray() {
+        DataUtilities.clone(null);
+    }
+
+    @Test
+    public void testClone_arrayWithNullRow() {
+        double[][] source = new double[2][];
+        source[0] = new double[] {1.0, 2.0};
+        source[1] = null; // second row is null
+
+        double[][] cloned = DataUtilities.clone(source);
+        assertNull("Second row should remain null in the clone", cloned[1]);
+    }
+
+    // Add Tests for DataUtilities.equal(double[][], double[][])
+    @Test
+    public void testEqual_bothNull() {
+        assertTrue(DataUtilities.equal(null, null));
+    }
+
+    @Test
+    public void testEqual_firstNullSecondNotNull() {
+        double[][] arr = {{1.0, 2.0}, {3.0, 4.0}};
+        assertFalse(DataUtilities.equal(null, arr));
+    }
+
+    @Test
+    public void testEqual_differentDimensions() {
+        double[][] arr1 = {{1.0, 2.0}, {3.0, 4.0}};
+        double[][] arr2 = {{1.0, 2.0, 3.0}};
+        assertFalse(DataUtilities.equal(arr1, arr2));
+    }
+
+    @Test
+    public void testEqual_sameContent() {
+        double[][] arr1 = {{1.0, Double.NaN}, {Double.POSITIVE_INFINITY, 4.0}};
+        double[][] arr2 = {{1.0, Double.NaN}, {Double.POSITIVE_INFINITY, 4.0}};
+        assertTrue(DataUtilities.equal(arr1, arr2));
+    }
+
+    @Test
+    public void testEqual_differentValues() {
+        double[][] arr1 = {{1.0, 2.0}, {3.0, 4.0}};
+        double[][] arr2 = {{1.0, 2.0}, {3.0, 999.0}};
+        assertFalse(DataUtilities.equal(arr1, arr2));
+    }
+
 }
