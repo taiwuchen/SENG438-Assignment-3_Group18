@@ -2,13 +2,13 @@
 
 **Lab. Report #3 – Code Coverage, Adequacy Criteria and Test Case Correlation**
 
-| Group \#: 18     |     |
-| -------------- | --- |
-| Student Names: |     |
-|        Abdul Rafay        |     |
+| Group \#: 18     |     
+| -------------- |
+| Student Names: |     
+|        Abdul Rafay        |    
 |     Mohammed Azmath Khan|
-|Taiwu Chen           |     |
-|       Hashir Naved         |     |
+|Taiwu Chen           |     
+|       Hashir Naved         |     
 
 (Note that some labs require individual reports while others require one report
 for each group. Please see each lab document for details.)
@@ -22,13 +22,13 @@ Text…
 ## (1) DataUtilities.calculateColumnTotal (2 arguments)
 
 ### Data Flow Diagram
-![]Pictures/data.drawio.png
+![](Pictures/data.drawio.png)
 
 ### Def-use sets per statement
-![]Pictures/data table.png
+![](Pictures/data table.png)
 
 ### DU-pairs per variable
-![] Pictures/data DU pairs.png
+![](Pictures/data DU pairs.png)
 
 ### Pairs covered in each test case
 FILL THIS IN
@@ -39,16 +39,16 @@ FILL THIS IN
 ## (1) Range.equals 
 
 ### Data Flow Diagram
-![]Pictures/range.drawio (1).png
+![](Pictures/range.drawio (1).png)
 
 ### Def-use sets per statement
-![]Pictures/range table.png
+![](Pictures/range table.png)
 
 ### DU-pairs per variable
-![]Pictures/range DU pairs.png
+![](Pictures/range DU pairs.png)
 
 ### Pairs covered in each test case
-![]Pictures/range coverage.png
+![](Pictures/range coverage.png)
 
 ### DU-pair coverage
 All Du-pairs are covered by each test case of Range.equals, thus the du-pair coverage is 100%.
