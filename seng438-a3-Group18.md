@@ -61,10 +61,12 @@ The aim during black-box testing was to find boundary values and equivalence cla
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 ![](Pictures/8.png)
+
 The new test case complements the existing one by covering the previously untested if (b0 <= this.lower) branch with an overlapping scenario. This increases branch coverage and ensures the intersects method correctly identifies intersections when the input range begins below the object’s lower bound but extends into it
 
 
 ![](Pictures/9.png)
+
 The new test case ensures the constrain method correctly clamps values exceeding the upper bound, complementing the existing test for the lower bound. This improves the robustness of the code by validating both extremities of the range constraint logic, directly increasing branch coverage
 
 ADD 3 MORE
@@ -80,11 +82,12 @@ ADD DATAUTILITIES CLASS
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
 
-|Aspect|Pros|Cons|
-|EclEmma| Free, open-source, and integrates seamlessly with Eclipse. Visual code highlighting for coverage. Supports multiple metrics.| Doesn't support Conditional Coverage|
-|Statement Coverage| Easy to measure and understand. Good for initial testing| Ignores decision logic.|
-|Branch Coverage| Tests different execution paths. Allows to validate all branches in the code| Branches inside boolean expressions are ignored|
-|Conditional Coverage| Ensures all boolean conditions are tested| Needs many test cases. EclEmma doesn’t explicitly support it, requiring manual review|
+| **Aspect**           | **Pros**                                                                                   | **Cons**                                                                                   |
+|-----------------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| **EclEmma**          | Free, open-source, and integrates seamlessly with Eclipse. Visual code highlighting for coverage. Supports multiple metrics (statement, branch, etc.). | Limited to Java/Eclipse projects. May slow down large projects. Doesn’t provide explicit conditional coverage reports (requires manual interpretation). |
+| **Statement Coverage** | Easy to measure and understand. EclEmma highlights lines (green/red) for clear feedback. Good for initial testing. | Ignores decision logic (e.g., branches). May overestimate code quality if branches are untested. |
+| **Branch Coverage**  | Tests different execution paths. EclEmma marks branches (yellow/green) to show coverage. Validates all major code branches. | Doesn’t fully cover conditions within complex boolean expressions. Requires more test cases than statement coverage. |
+| **Conditional Coverage** | Ensures all boolean conditions are tested (true/false). Critical for thorough logic validation. Supported indirectly via EclEmma’s branch analysis. | Requires many test cases. EclEmma doesn’t explicitly isolate it, needing manual review of compound conditions. |
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
