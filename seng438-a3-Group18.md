@@ -60,11 +60,11 @@ We started our testing plan by evaluating test case adequacy criteria from Assig
 The aim during black-box testing was to find boundary values and equivalence classes which created stronger method tests. We built our work from this basic framework to obtain total statement along with full branch and method testing. The test cases we designed specifically targeted different statements that appeared in multiple branch conditions to fulfill the requirements of the assignment. EclEmma enabled a graphical coverage display which helped us develop our tests by showing fully covered and partially covered and uncovered statements during the development process.
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
-![](Pictures/8)
+![](Pictures/8.png)
 The new test case complements the existing one by covering the previously untested if (b0 <= this.lower) branch with an overlapping scenario. This increases branch coverage and ensures the intersects method correctly identifies intersections when the input range begins below the object’s lower bound but extends into it
 
 
-![](Pictures/9)
+![](Pictures/9.png)
 The new test case ensures the constrain method correctly clamps values exceeding the upper bound, complementing the existing test for the lower bound. This improves the robustness of the code by validating both extremities of the range constraint logic, directly increasing branch coverage
 
 ADD 3 MORE
@@ -72,8 +72,10 @@ ADD 3 MORE
 # 5 A detailed report of the coverage achieved of each class and method (a screen shot from the code cover results in green and red color would suffice)
 
 ## (1) Range Class/Methods
-![](Pictures/10)
-![](Pictures/11)
+![](Pictures/10.png)
+![](Pictures/11.png)
+
+ADD DATAUTILITIES CLASS
 
 
 # 6 Pros and Cons of coverage tools used and Metrics you report
