@@ -22,13 +22,13 @@ Text…
 ## (1) DataUtilities.calculateColumnTotal (2 arguments)
 
 ### Data Flow Diagram
-![](Pictures/data.drawio.png)
+![](Pictures/1.png)
 
 ### Def-use sets per statement
-![](Pictures/data table.png)
+![](Pictures/2.png)
 
 ### DU-pairs per variable
-![](Pictures/data DU pairs.png)
+![](Pictures/3.png)
 
 ### Pairs covered in each test case
 FILL THIS IN
@@ -39,16 +39,16 @@ FILL THIS IN
 ## (1) Range.equals 
 
 ### Data Flow Diagram
-![](Pictures/range.drawio (1).png)
+![](Pictures/4.png)
 
 ### Def-use sets per statement
-![](Pictures/range table.png)
+![](Pictures/5.png)
 
 ### DU-pairs per variable
-![](Pictures/range DU pairs.png)
+![](Pictures/6.png)
 
 ### Pairs covered in each test case
-![](Pictures/range coverage.png)
+![](Pictures/7.png)
 
 ### DU-pair coverage
 All Du-pairs are covered by each test case of Range.equals, thus the du-pair coverage is 100%.
