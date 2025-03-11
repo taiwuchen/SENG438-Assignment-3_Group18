@@ -84,10 +84,10 @@ ADD DATAUTILITIES CLASS
 
 | **Aspect**           | **Pros**                                                                                   | **Cons**                                                                                   |
 |-----------------------|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| **EclEmma**          | Free, open-source, and integrates seamlessly with Eclipse. Visual code highlighting for coverage. Supports multiple metrics (statement, branch, etc.). | Limited to Java/Eclipse projects. May slow down large projects. Doesn’t provide explicit conditional coverage reports (requires manual interpretation). |
-| **Statement Coverage** | Easy to measure and understand. EclEmma highlights lines (green/red) for clear feedback. Good for initial testing. | Ignores decision logic (e.g., branches). May overestimate code quality if branches are untested. |
-| **Branch Coverage**  | Tests different execution paths. EclEmma marks branches (yellow/green) to show coverage. Validates all major code branches. | Doesn’t fully cover conditions within complex boolean expressions. Requires more test cases than statement coverage. |
-| **Conditional Coverage** | Ensures all boolean conditions are tested (true/false). Critical for thorough logic validation. Supported indirectly via EclEmma’s branch analysis. | Requires many test cases. EclEmma doesn’t explicitly isolate it, needing manual review of compound conditions. |
+| **EclEmma**          | Free, open-source, and integrates seamlessly with Eclipse. Visual code highlighting for coverage. Supports multiple metrics. | Doesn't support Conditional Coverage. Initially difficult to understand |
+| **Statement Coverage** | Easy to measure and understand. Good for initial testing | Ignores decision logic. |
+| **Branch Coverage**  | Tests different execution paths. Allows to validate all branches in the code. | Branches inside Boolean expressions are ignored. |
+| **Conditional Coverage** | Ensures all Boolean conditions are tested. | Needs many test cases. EclEmma doesn’t explicitly support it, requiring manual review. |
 
 # 7 A comparison on the advantages and disadvantages of requirements-based test generation and coverage-based test generation.
 
